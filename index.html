@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+  <head>
+    <style>
+      table, th, td { border: 1px solid black; padding: 0.25em; }
+    </style>
+    <script>
+    	var array=[];
+    	function del(index){
+    		array.splice(index,1);
+    		print();
+    	}
+
+    	function edit(index){
+    		var username = prompt("Re-Enter your name?");
+    		array[index]=username;
+    		print();
+    	}
+
+    	function print(){
+    		var html="";
+    		document.getElementById('data').innerHTML=html;
+    		array.forEach(myFunction);
+    		function myFunction(value, index, array) {
+  html += "<tr><td>"+value+"</td><td><button onclick=edit("+index+")>edit</button></td><td><button onclick=del("+index+")>delete</button></td></tr>";
+ 
+}
+document.getElementById('data').innerHTML=html;
+    	}
+
+      function add(){
+        var username = prompt("What is your name?");
+        array.push(username);
+        print();
+      }
+      </script>
+    <title>Products</title>
+  </head>
+
+  <body>
+    <button onClick="add()">Add New</button>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th colspan="2">Actions</th>
+        </tr>
+      </thead>
+      <tbody id="data">
+        
+      </tbody>
+    </table>
+  </body>
+</html>
